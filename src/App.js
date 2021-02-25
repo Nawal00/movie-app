@@ -1,17 +1,22 @@
-import React , { useEffect } from 'react';
-import SearchBar from './components/SearchBar'; 
+import React from 'react';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import Home from './components/home/Home';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 
 const App = () => {
 
-   
 
   return (
-    <div className="App">
-       Movie Search App
-       <SearchBar />
-    </div>
+    <main className="App">
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          {/* <Route path="/movie/:id" component={MovieDetail} /> */}
+        </Switch>
+      </BrowserRouter>
+    </main>
   );
 }
 

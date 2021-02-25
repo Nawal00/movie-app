@@ -1,23 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react';
 import { Form, Col, Button } from 'react-bootstrap';
 
-import { searchMovie } from '../service/index';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
 
-    const [movie, setMovie] = useState('');
-
-    const handleSearchMovie = (e) => {
-        const { value } = e.target;
-        setMovie(value);
-    };
-
-
-    const fetchSearchMovieAPI = (e) => {
-        e.preventDefault(); 
-        searchMovie(movie);
-    }
-   
+    const { movie, handleSearchMovie, fetchSearchMovieAPI } = props;
 
     return (
         <Form>
@@ -29,12 +16,13 @@ const SearchBar = () => {
                         value={movie}
                         placeholder="Enter movie name"
                         onChange={handleSearchMovie}
+                        autoFocus
                     />
                 </Col>
                 <Col xs="auto">
-                    <Button 
-                        type="submit" 
-                        onClick={fetchSearchMovieAPI}
+                    <Button
+                        type="submit"
+                        onClick={(e) => fetchSearchMovieAPI(e)}
                     >
                         Search
                     </Button>
