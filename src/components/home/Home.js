@@ -9,7 +9,6 @@ const Home = () => {
 
     const [movie, setMovie] = useState('');
     const [moviesList, setMoviesList] = useState([]);
-    console.log('moviesList:', moviesList);
 
     const handleSearchMovie = (e) => {
         const { value } = e.target;

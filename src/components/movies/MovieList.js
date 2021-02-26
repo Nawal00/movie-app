@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Link } from 'react-router-dom';
 
 
 const MovieList = (props) => {
 
-    const { original_title } = props;
+    const { original_title, id } = props;
 
 
     return (
-        <div>
-            {original_title}
-        </div>
+        <Link to={`/movie/${id}`}>
+            <div>{original_title}</div>
+        </Link>
     )
 }
 
