@@ -10,8 +10,7 @@ const Home = () => {
 
     const [searchInputValue, setSearchInputValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
-    const [filteredSsearchResult, setFilteredSsearchResult] = useState([]);
-    console.log('searchResult:', searchResult)
+    const [filteredSearchResult, setFilteredSsearchResult] = useState([]);
     const [searchType, setSearchType] = useState('');
 
     const handleSearchKeywords = (e) => {
@@ -30,16 +29,17 @@ const Home = () => {
     };
 
     const handleSearchFilter = (filterType) => {
-        const filteredBySearchType = searchResult?.filter(list => list.media_type === filterType);
-        // setFilteredSsearchResult(filteredBySearchType);
-        setSearchResult(filteredBySearchType);
+        if (searchType.length > 1 && searchType !== 'all') {
+            const filteredBySearchType = searchResult?.filter(list => list.media_type === filterType);
+            setFilteredSsearchResult(filteredBySearchType);
+        } else {
+            setFilteredSsearchResult(searchResult)
+        }
     };
 
     useEffect(() => {
-        if (searchType.length > 1) {
-            handleSearchFilter(searchType)
-        }
-    }, [searchType])
+        handleSearchFilter(searchType)
+    }, [searchType, searchResult])
 
     return (
         <div>
@@ -54,7 +54,7 @@ const Home = () => {
                 searchType={searchType}
                 handleSearchType={handleSearchType}
             />
-            {searchResult?.map(serachResult =>
+            {filteredSearchResult?.map(serachResult =>
                 <SearchList key={serachResult.id} {...serachResult} />)}
         </div>
     )
