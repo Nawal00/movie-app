@@ -45,7 +45,7 @@ const Home = () => {
         <div>
             <Jumbotron className="text-center">
                 <h1>Movie Database Search App</h1>
-                <p>Enter a any movie, TV show or cast name to start your search!</p>
+                <p>Enter any movie, TV show or cast name to start your search!</p>
             </Jumbotron>
             <SearchBar
                 searchInputValue={searchInputValue}
