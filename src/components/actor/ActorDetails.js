@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from 'react-router-dom';
+import { Card, Row, Col, Jumbotron } from 'react-bootstrap';
 
 import { fetchActorDetails } from '../../api/serverApi';
+import CardLayout from '../common/CardLayout';
 
 const ActorDetails = () => {
 
     const { actor_id } = useParams();
     const [actorInMovies, setActorInMovies] = useState([]);
+    console.log('actorInMovies:', actorInMovies);
     // console.log('actor:', actor)
 
 
@@ -19,15 +22,13 @@ const ActorDetails = () => {
 
     return (
         <div>
-            <h1>Actor Detail</h1>
+            <Jumbotron className="text-center">
+                <h1>Actor Details</h1>
+            </Jumbotron>
 
             {actorInMovies?.map(movie =>
-                <Link to={`/movie/${movie.id}`}>
-                    <div key={movie.id} style={{ 'margin': '50px' }}>
-                        <p>Movie Title: {movie.title}</p>
-                        <p>Character: {movie.character}</p>
-                        <img src={movie.poster} alt='movie' />
-                    </div>
+                <Link to={`/movie/${movie.id}`} key={movie.id}>
+                    <CardLayout  {...movie} />
                 </Link>
             )}
         </div>

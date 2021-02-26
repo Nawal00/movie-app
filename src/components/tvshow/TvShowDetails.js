@@ -3,34 +3,34 @@ import { Link, useParams } from 'react-router-dom';
 import { Card, Row, Col, Jumbotron } from 'react-bootstrap';
 
 import CardLayout from '../common/CardLayout';
-import { fetchMovieDetails, fetchCast } from '../../api/serverApi';
-import './MovieDetails.scss'; 
+import { fetchTvShowDetails, fetchCast } from '../../api/serverApi';
+// import './TvShow.scss';
 
-const MovieDetails = () => {
+const TvShowDetails = () => {
 
-    const { movie_id } = useParams();
-    const [movie, setMovie] = useState([]);
+    const { tv_show_id } = useParams();
+    const [tvShow, setShow] = useState([]);
     const [cast, setCast] = useState([]);
 
     useEffect(() => {
         const fetchMovieDetailsAPI = async () => {
-            setMovie(await fetchMovieDetails(movie_id))
-            setCast(await fetchCast(movie_id, 'movie'))
+            setShow(await fetchTvShowDetails(tv_show_id))
+            setCast(await fetchCast(tv_show_id, 'tv'))
         }
         fetchMovieDetailsAPI();
-    }, [movie_id])
+    }, [tv_show_id])
 
     return (
         <div className="movie__details__container">
             <Jumbotron className="text-center">
-                <h1>Movie Details</h1>
+                <h1>TV Show Details</h1>
             </Jumbotron>
-            <CardLayout {...movie} />
+            <CardLayout {...tvShow} />
             <Row>
                 {cast?.map((cast, i) =>
                     <Col md={3} key={cast.id + i}>
-                        <Link to={`/actor/${cast.id}`}> 
-                            <Card key={cast.id + i} className="cast__card">
+                        <Link to={`/actor/${cast.id}`}>
+                            <Card className="cast__card">
                                 <Card.Img src={`https://image.tmdb.org/t/p/w200/${cast.profile_path}`} alt='actor' />
                                 <Card.Text>Name: {cast.name}</Card.Text>
                                 <Card.Text>Character: {cast.character}</Card.Text>
@@ -43,7 +43,7 @@ const MovieDetails = () => {
     )
 }
 
-export default MovieDetails;
+export default TvShowDetails;
 
 
 // # List all major cast  members in that show, 

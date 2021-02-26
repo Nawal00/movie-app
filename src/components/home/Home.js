@@ -1,36 +1,61 @@
-import React, { useState, } from "react";
+import React, { useState, useEffect } from "react";
+import { Jumbotron } from 'react-bootstrap';
 
-import SearchBar from '../searchBar/SearchBar';
-import MovieList from '../movies/MovieList';
+import SearchBar from '../search/SearchBar';
+import SearchList from '../search/SearchList';
 
-import { searchMovie } from '../../api/serverApi';
+import { searchAllTypes } from '../../api/serverApi';
 
 const Home = () => {
 
-    const [movie, setMovie] = useState('');
-    const [moviesList, setMoviesList] = useState([]);
+    const [searchInputValue, setSearchInputValue] = useState('');
+    const [searchResult, setSearchResult] = useState([]);
+    const [filteredSsearchResult, setFilteredSsearchResult] = useState([]);
+    console.log('searchResult:', searchResult)
+    const [searchType, setSearchType] = useState('');
 
-    const handleSearchMovie = (e) => {
+    const handleSearchKeywords = (e) => {
         const { value } = e.target;
-        setMovie(value);
+        setSearchInputValue(value);
     };
 
-    const fetchSearchMovieAPI = async (e) => {
+    const fetchSearchKeywordsAPI = async (e) => {
         e.preventDefault();
-        setMoviesList(await searchMovie(movie));
-    }
+        setSearchResult(await searchAllTypes(searchInputValue));
+    };
 
+    const handleSearchType = (e) => {
+        const { value } = e.target;
+        setSearchType(value);
+    };
+
+    const handleSearchFilter = (filterType) => {
+        const filteredBySearchType = searchResult?.filter(list => list.media_type === filterType);
+        // setFilteredSsearchResult(filteredBySearchType);
+        setSearchResult(filteredBySearchType);
+    };
+
+    useEffect(() => {
+        if (searchType.length > 1) {
+            handleSearchFilter(searchType)
+        }
+    }, [searchType])
 
     return (
         <div>
-            Movie Search App
+            <Jumbotron className="text-center">
+                <h1>Movie Database Search App</h1>
+                <p>Enter a any movie, TV show or cast name to start your search!</p>
+            </Jumbotron>
             <SearchBar
-                movie={movie}
-                handleSearchMovie={handleSearchMovie}
-                fetchSearchMovieAPI={fetchSearchMovieAPI}
+                searchInputValue={searchInputValue}
+                handleSearchKeywords={handleSearchKeywords}
+                fetchSearchKeywordsAPI={fetchSearchKeywordsAPI}
+                searchType={searchType}
+                handleSearchType={handleSearchType}
             />
-            {moviesList?.map(movie =>
-                <MovieList key={movie.id} {...movie} />)}
+            {searchResult?.map(serachResult =>
+                <SearchList key={serachResult.id} {...serachResult} />)}
         </div>
     )
 }
