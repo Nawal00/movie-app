@@ -11,7 +11,7 @@ const Home = () => {
     const [searchInputValue, setSearchInputValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [filteredSearchResult, setFilteredSsearchResult] = useState([]);
-    const [searchType, setSearchType] = useState('');
+    const [searchType, setSearchType] = useState('all');
 
     const handleSearchKeywords = (e) => {
         const { value } = e.target;
