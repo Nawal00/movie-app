@@ -15,15 +15,15 @@ export default function CardLayout(props) {
                 <Card.Img src={`https://image.tmdb.org/t/p/w500/${imgUrl}`} />
                 <Card.Body>
                     <Card.Title as="h3">{title ? title : name}</Card.Title>
-                    {release_date && <Card.Text>Release Date: {release_date}</Card.Text>}
-                    {first_air_date && <Card.Text>First Air Date: {first_air_date}</Card.Text>}
+                    {release_date && <Card.Text>Release: {release_date.split('-')[0]}</Card.Text>}
+                    {first_air_date && <Card.Text>First Air Date: {first_air_date.split('-')[0]}</Card.Text>}
                     {character && <Card.Text>Character: {character}</Card.Text>}
                     <Card.Text>{overview}</Card.Text>
                 </Card.Body>
             </Card>
         </div>
     )
-}
+};
 
 CardLayout.propTypes = {
     name: PropTypes.string,
@@ -34,4 +34,4 @@ CardLayout.propTypes = {
     first_air_date: PropTypes.string,
     poster_path: PropTypes.string,
     profile_path: PropTypes.string
-}
+};

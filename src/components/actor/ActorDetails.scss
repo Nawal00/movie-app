@@ -1,7 +1,22 @@
 .actor__details__container {
-    .jumbotron  {
+    .jumbotron {
         width: 69rem;
         margin: auto;
         text-align: center;
+    }
+    .card__container {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        .card { 
+            display: flex; 
+            width: 69rem;
+            flex-direction: row;
+            margin: 1rem 0;
+        }
+        .card-img {
+            width: 18rem;
+            height: fit-content;
+        }
     }
 }

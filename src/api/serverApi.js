@@ -1,21 +1,14 @@
 import axios from 'axios';
 
-const apiKey = '15bff328286beedc36d2ae75dc39c48e';
-const searchMoviesUrl = '/search/movie';
-const searchKeyWordUrl = '/search/multi';
-const movieUrl = '/movie';
-const tvShowUrl = '/tv';
-const actorUrl = '/person';
-
 const serverApi = axios.create({
     baseURL: 'https://api.themoviedb.org/3',
-    params: { api_key: apiKey, }
+    params: { api_key: '15bff328286beedc36d2ae75dc39c48e' }
 });
 
 
 export const searchMovie = async (searchMovie) => {
     try {
-        const response = await serverApi.get(`${searchMoviesUrl}?query=${searchMovie}`)
+        const response = await serverApi.get(`/search/movie?query=${searchMovie}`)
         return response.data.results;
     }
     catch (err) {
@@ -25,7 +18,7 @@ export const searchMovie = async (searchMovie) => {
 
 export const searchAllTypes = async (searchKey) => {
     try {
-        const response = await serverApi.get(`${searchKeyWordUrl}?query=${searchKey}`)
+        const response = await serverApi.get(`/search/multi?query=${searchKey}`)
         return response.data.results;
     }
     catch (err) {
@@ -35,7 +28,7 @@ export const searchAllTypes = async (searchKey) => {
 
 export const fetchMovieDetails = async (id) => {
     try {
-        const { data } = await serverApi.get(`${movieUrl}/${id}`);
+        const { data } = await serverApi.get(`/movie/${id}`);
         return data;
     }
     catch (err) {
@@ -45,7 +38,7 @@ export const fetchMovieDetails = async (id) => {
 
 export const fetchTvShowDetails = async (id) => {
     try {
-        const { data } = await serverApi.get(`${tvShowUrl}/${id}`);
+        const { data } = await serverApi.get(`/tv/${id}`);
         return data;
     }
     catch (err) {
@@ -63,10 +56,21 @@ export const fetchCast = async (id, type) => {
     }
 }
 
+export const fetchActorMovieCredits = async (id) => {
+    try {
+        const { data } = await serverApi.get(`/person/${id}/movie_credits`);
+        return data.cast;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
 export const fetchActorDetails = async (id) => {
     try {
-        const { data } = await serverApi.get(`${actorUrl}/${id}/movie_credits`);
-        return data.cast;
+        const { data } = await serverApi.get(`/person/${id}`);
+        console.log('data:', data);
+        return data;
     }
     catch (error) {
         console.log(error);
