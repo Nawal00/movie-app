@@ -1,5 +1,6 @@
 import React from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, } from 'react-router-dom';
+import { Jumbotron } from 'react-bootstrap';
 
 import Home from './components/home/Home';
 import MovieDetails from './components/movies/MovieDetail';
@@ -7,23 +8,44 @@ import ActorDetails from './components/actor/ActorDetails';
 import TvShowDetails from './components/tvshow/TvShowDetails';
 import SearchBar from './components/search/SearchBar';
 
+import useSearchHooks from './hooks/useSearchHooks';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 
+
 const App = () => {
 
+  const {
+    handleSearchKeywords,
+    fetchSearchKeywordsAPI,
+    handleSearchType,
+    filteredSearchResult,
+    searchType,
+    searchInputValue,
+    suggestions,
+  } = useSearchHooks();
 
   return (
     <main className="App">
-      {/* <SearchBar /> */}
-      <BrowserRouter>
-        <Switch>
-          <Route path="/tv/:tv_show_id" component={TvShowDetails} />
-          <Route path="/actor/:actor_id" component={ActorDetails} />
-          <Route path="/movie/:movie_id" component={MovieDetails} />
-          <Route exact path="/" component={Home} />
-        </Switch>
-      </BrowserRouter>
+      <Jumbotron fluid className="text-center">
+        <h1>Movie Database Search App</h1>
+        <p>Enter any movie, TV show or cast name to start your search!</p>
+      </Jumbotron>
+      <SearchBar
+        searchInputValue={searchInputValue}
+        handleSearchKeywords={handleSearchKeywords}
+        fetchSearchKeywordsAPI={fetchSearchKeywordsAPI}
+        searchType={searchType}
+        handleSearchType={handleSearchType}
+        suggestions={suggestions}
+      />
+      <Switch>
+        <Route path="/tv/:tv_show_id" component={TvShowDetails} />
+        <Route path="/person/:actor_id" component={ActorDetails} />
+        <Route path="/movie/:movie_id" component={MovieDetails} />
+        <Route exact path="/" render={() => <Home filteredSearchResult={filteredSearchResult} />} />
+      </Switch>
     </main>
   );
 }

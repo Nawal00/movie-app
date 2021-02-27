@@ -9,9 +9,6 @@ const ActorDetails = () => {
 
     const { actor_id } = useParams();
     const [actorInMovies, setActorInMovies] = useState([]);
-    console.log('actorInMovies:', actorInMovies);
-    // console.log('actor:', actor)
-
 
     useEffect(() => {
         const fetchActorDetailsAPI = async () => {
@@ -38,4 +35,3 @@ const ActorDetails = () => {
 export default ActorDetails;
 
 
-// # an actor details page will list all the shows that the actor has appeared in. 

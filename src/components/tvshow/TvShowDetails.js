@@ -29,7 +29,7 @@ const TvShowDetails = () => {
             <Row>
                 {cast?.map((cast, i) =>
                     <Col md={3} key={cast.id + i}>
-                        <Link to={`/actor/${cast.id}`}>
+                        <Link to={`/person/${cast.id}`}>
                             <Card className="cast__card">
                                 <Card.Img src={`https://image.tmdb.org/t/p/w200/${cast.profile_path}`} alt='actor' />
                                 <Card.Text>Name: {cast.name}</Card.Text>

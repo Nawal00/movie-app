@@ -5,14 +5,8 @@ import CardLayout from '../common/CardLayout';
 
 const SearchList = (props) => {
 
-    const { id, media_type, } = props;
-
-    const isMovie = media_type === 'movie';
-    const isTV = media_type === 'tv';
-    const routeTo = isTV ? `/tv/${id}` : isMovie ? `/movie/${id}` : `/actor/${id}`;
-
     return (
-        <Link to={routeTo}>
+        <Link to={`/${props.media_type}/${props.id}`}>
             <CardLayout {...props} />
         </Link>
     )
