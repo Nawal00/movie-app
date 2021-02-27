@@ -9,13 +9,13 @@ import { searchAllTypes } from '../../api/serverApi';
 const Home = () => {
 
     const [searchInputValue, setSearchInputValue] = useState('');
+    console.log('searchInputValue:', searchInputValue);
     const [searchResult, setSearchResult] = useState([]);
     const [filteredSearchResult, setFilteredSsearchResult] = useState([]);
     const [searchType, setSearchType] = useState('all');
 
-    const handleSearchKeywords = (e) => {
-        const { value } = e.target;
-        setSearchInputValue(value);
+    const handleSearchKeywords = (inputValue) => {
+        setSearchInputValue(inputValue);
     };
 
     const fetchSearchKeywordsAPI = async (e) => {
@@ -36,6 +36,11 @@ const Home = () => {
             setFilteredSsearchResult(searchResult)
         }
     };
+
+    // const handleSuggestion = () => {
+
+
+    // }; 
 
     useEffect(() => {
         handleSearchFilter(searchType)

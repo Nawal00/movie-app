@@ -9,9 +9,7 @@ const actorUrl = '/person';
 
 const serverApi = axios.create({
     baseURL: 'https://api.themoviedb.org/3',
-    params: {
-        api_key: apiKey,
-    }
+    params: { api_key: apiKey, }
 });
 
 
@@ -23,8 +21,8 @@ export const searchMovie = async (searchMovie) => {
     catch (err) {
         console.log(err);
     }
-
 };
+
 export const searchAllTypes = async (searchKey) => {
     try {
         const response = await serverApi.get(`${searchKeyWordUrl}?query=${searchKey}`)
@@ -33,7 +31,6 @@ export const searchAllTypes = async (searchKey) => {
     catch (err) {
         console.log(err);
     }
-
 };
 
 export const fetchMovieDetails = async (id) => {

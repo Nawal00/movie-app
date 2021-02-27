@@ -5,6 +5,7 @@ import Home from './components/home/Home';
 import MovieDetails from './components/movies/MovieDetail';
 import ActorDetails from './components/actor/ActorDetails';
 import TvShowDetails from './components/tvshow/TvShowDetails';
+import SearchBar from './components/search/SearchBar';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
@@ -14,6 +15,7 @@ const App = () => {
 
   return (
     <main className="App">
+      {/* <SearchBar /> */}
       <BrowserRouter>
         <Switch>
           <Route path="/tv/:tv_show_id" component={TvShowDetails} />
