@@ -22,7 +22,7 @@ const SearchBar = (props) => {
 
     } = props;
 
-    const [displaySuggestions, setDisplaySuggestions] = useState(true)
+    const [displaySuggestions, setDisplaySuggestions] = useState(false)
     console.log('displaySuggestions:', displaySuggestions)
 
     return (
@@ -38,7 +38,7 @@ const SearchBar = (props) => {
                                 value={searchInputValue}
                                 placeholder="i.e. Jumanji or Jamie Foxx"
                                 onChange={handleSearchKeywords}
-                                onClick={() => setDisplaySuggestions(!displaySuggestions)}
+                                onFocus={() => setDisplaySuggestions(true)}
                                 autoFocus
                             />
                             <Col sm={12} className="suggestion__list__container">
@@ -47,7 +47,7 @@ const SearchBar = (props) => {
                                         to={`/${suggestion.media_type}/${suggestion.id}`}
                                         id={suggestion.id}
                                     >
-                                        <option onClick={() => setDisplaySuggestions(!displaySuggestions)}>
+                                        <option onClick={() => setDisplaySuggestions(false)}>
                                             {suggestion.title || suggestion.name}
                                         </option>
                                     </Link>
