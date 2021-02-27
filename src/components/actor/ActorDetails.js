@@ -4,6 +4,7 @@ import { Jumbotron } from 'react-bootstrap';
 
 import { fetchActorDetails } from '../../api/serverApi';
 import CardLayout from '../common/CardLayout';
+import './ActorDetails.scss';
 
 const ActorDetails = () => {
 
@@ -18,8 +19,8 @@ const ActorDetails = () => {
     }, [actor_id])
 
     return (
-        <div>
-            <Jumbotron className="text-center">
+        <div className="actor__details__container">
+            <Jumbotron>
                 <h1>Actor Details</h1>
             </Jumbotron>
 

@@ -5,5 +5,13 @@
     background: #fff;
     position: absolute !important;
     font-size: 18px;
+    border-right: 1px solid #d9dfe093;
+    border-left: 1px solid #d9dfe093;
+    option{
+        padding: .3rem 0;
+        &:hover {
+            color: #095ab1;
+        }
+    }
   }
 }

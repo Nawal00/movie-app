@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, } from 'react-router-dom';
-import { Jumbotron } from 'react-bootstrap';
+import { Jumbotron, Col } from 'react-bootstrap';
 
 import Home from './components/home/Home';
 import MovieDetails from './components/movies/MovieDetail';
@@ -29,10 +29,12 @@ const App = () => {
 
   return (
     <main className="App">
-      <Jumbotron fluid className="text-center">
+      <Col md={12} sm={12}>
+        <Jumbotron fluid className="text-center">
         <h1>Movie Database Search App</h1>
         <p>Enter any movie, TV show or cast name to start your search!</p>
       </Jumbotron>
+      </Col>
       <SearchBar
         searchInputValue={searchInputValue}
         handleSearchKeywords={handleSearchKeywords}

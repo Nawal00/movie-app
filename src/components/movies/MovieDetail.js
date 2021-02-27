@@ -22,20 +22,19 @@ const MovieDetails = () => {
 
     return (
         <div className="movie__details__container">
-            <CardLayout {...movie} />
-            <Col sm={{ span: 6, offset: 3 }}>
-                <Jumbotron className="text-center">
+            <Col sm={12}><CardLayout {...movie} /></Col>
+            <Col sm={12}>
+                <Jumbotron>
                     <h1>Cast</h1>
                 </Jumbotron>
             </Col>
-            <Row>
-                {cast?.map((cast, i) =>
-                    <Col key={cast.id + i} sm={{ span: 2, offset: 1 }}>
+            <Row className="movies__cast__cotainer">
+                {cast?.map((cast) =>
+                    <Col key={cast.id + cast.credit_id} sm={3}>
                         <Link to={`/person/${cast.id}`}>
                             <Card className="cast__card">
                                 <Card.Img src={`https://image.tmdb.org/t/p/w200/${cast.profile_path}`} alt='actor' />
-                                <Card.Text>Name: {cast.name}</Card.Text>
-                                <Card.Text>Character: {cast.character}</Card.Text>
+                                <Card.Text>{cast.name}<br />Character: {cast.character}</Card.Text>
                             </Card>
                         </Link>
                     </Col>

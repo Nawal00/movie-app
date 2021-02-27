@@ -10,7 +10,7 @@ export default function CardLayout(props) {
     const imgUrl = poster_path || profile_path;
 
     return (
-        <div className="card-container">
+        <div className="card__container">
             <Card>
                 <Card.Img src={`https://image.tmdb.org/t/p/w500/${imgUrl}`} />
                 <Card.Body>

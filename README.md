@@ -19,3 +19,10 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### Improvements   
+* If time allowed, I would have liked to get more test coverage and 
+written project in Typescript but that would slow me down as I don't use it daily. 
+* I would add error handling and improve on UI styling/responsiveness and UX. 
+* I could use React Context for my Search Bar state for a bigger app however for the scope of this project 
+I used cusom hooks. 
+
