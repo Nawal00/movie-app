@@ -24,6 +24,7 @@ const App = () => {
     searchType,
     searchInputValue,
     suggestions,
+    setSearchInputValue,
   } = useSearchHooks();
 
   return (
@@ -39,6 +40,7 @@ const App = () => {
         searchType={searchType}
         handleSearchType={handleSearchType}
         suggestions={suggestions}
+        setSearchInputValue={setSearchInputValue}
       />
       <Switch>
         <Route path="/tv/:tv_show_id" component={TvShowDetails} />

@@ -60,5 +60,6 @@ export default function useSearchHooks() {
         searchType,
         searchInputValue,
         suggestions,
+        setSearchInputValue,
     }
 }

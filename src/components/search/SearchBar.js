@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import './SearchBar.scss'
@@ -19,11 +19,8 @@ const SearchBar = (props) => {
         handleSearchType,
         searchType,
         suggestions,
-
+        setSearchInputValue,
     } = props;
-
-    const [displaySuggestions, setDisplaySuggestions] = useState(false)
-    console.log('displaySuggestions:', displaySuggestions)
 
     return (
         <>
@@ -38,16 +35,15 @@ const SearchBar = (props) => {
                                 value={searchInputValue}
                                 placeholder="i.e. Jumanji or Jamie Foxx"
                                 onChange={handleSearchKeywords}
-                                onFocus={() => setDisplaySuggestions(true)}
                                 autoFocus
                             />
                             <Col sm={12} className="suggestion__list__container">
-                                {displaySuggestions && suggestions.map(suggestion =>
+                                {suggestions.map(suggestion =>
                                     <Link
                                         to={`/${suggestion.media_type}/${suggestion.id}`}
-                                        id={suggestion.id}
+                                        key={suggestion.id}
                                     >
-                                        <option onClick={() => setDisplaySuggestions(false)}>
+                                        <option onClick={() => setSearchInputValue('')}>
                                             {suggestion.title || suggestion.name}
                                         </option>
                                     </Link>
@@ -58,7 +54,7 @@ const SearchBar = (props) => {
                             <Button
                                 size="lg"
                                 type="submit"
-                                onClick={(e) => fetchSearchKeywordsAPI(e)}
+                                onClick={(e) => { fetchSearchKeywordsAPI(e); setSearchInputValue('') }}
                             >
                                 Search
                             </Button>

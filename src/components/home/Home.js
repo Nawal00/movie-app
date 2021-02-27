@@ -5,10 +5,10 @@ import SearchList from '../search/SearchList';
 const Home = ({ filteredSearchResult }) => {
 
     return (
-        <div>
+        <React.Fragment>
             {filteredSearchResult?.map(serachResult =>
                 <SearchList key={serachResult.id} {...serachResult} />)}
-        </div>
+        </React.Fragment>
     )
 }
 

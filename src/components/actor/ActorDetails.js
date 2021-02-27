@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from 'react-router-dom';
-import { Card, Row, Col, Jumbotron } from 'react-bootstrap';
+import { Jumbotron } from 'react-bootstrap';
 
 import { fetchActorDetails } from '../../api/serverApi';
 import CardLayout from '../common/CardLayout';
