@@ -28,7 +28,7 @@ const TvShowDetails = () => {
             <CardLayout {...tvShow} />
             <Row>
                 {cast?.map((cast, i) =>
-                    <Col md={3} key={cast.id + i}>
+                    <Col md={3} key={cast.id + cast.name}>
                         <Link to={`/person/${cast.id}`}>
                             <Card className="cast__card">
                                 <Card.Img src={`https://image.tmdb.org/t/p/w200/${cast.profile_path}`} alt='actor' />
@@ -45,5 +45,3 @@ const TvShowDetails = () => {
 
 export default TvShowDetails;
 
-
-// # List all major cast  members in that show, 

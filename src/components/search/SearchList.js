@@ -12,4 +12,4 @@ const SearchList = (props) => {
     )
 }
 
-export default SearchList; //className="mx-auto my-4
+export default SearchList; 

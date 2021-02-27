@@ -1,6 +1,9 @@
-.suggestion__list__container {
-    z-index: 1; 
+.search__bar__component {
+  padding-top: 3rem;
+  .suggestion__list__container {
+    z-index: 1;
     background: #fff;
     position: absolute !important;
     font-size: 18px;
+  }
 }

@@ -23,8 +23,8 @@ const ActorDetails = () => {
                 <h1>Actor Details</h1>
             </Jumbotron>
 
-            {actorInMovies?.map(movie =>
-                <Link to={`/movie/${movie.id}`} key={movie.id}>
+            {actorInMovies?.map((movie, i) =>
+                <Link to={`/movie/${movie.id}`} key={movie.id + i}>
                     <CardLayout  {...movie} />
                 </Link>
             )}

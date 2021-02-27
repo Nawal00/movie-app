@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 import './CardLayout.scss';
 
@@ -22,4 +23,15 @@ export default function CardLayout(props) {
             </Card>
         </div>
     )
+}
+
+CardLayout.propTypes = {
+    name: PropTypes.string,
+    overview: PropTypes.string,
+    release_date: PropTypes.string,
+    title: PropTypes.string,
+    character: PropTypes.string,
+    first_air_date: PropTypes.string,
+    poster_path: PropTypes.string,
+    profile_path: PropTypes.string
 }

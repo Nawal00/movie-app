@@ -2,13 +2,14 @@ import { useState, useCallback, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { searchAllTypes } from '../api/serverApi';
 
-export default function useSearchHooks() {
+const useSearchHooks = () => {
 
     const [searchInputValue, setSearchInputValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [filteredSearchResult, setFilteredSsearchResult] = useState([]);
     const [searchType, setSearchType] = useState('all');
     const [suggestions, setSuggestions] = useState([]);
+
     const history = useHistory();
 
     const handleSearchKeywords = (e) => {
@@ -63,3 +64,5 @@ export default function useSearchHooks() {
         setSearchInputValue,
     }
 }
+
+export default useSearchHooks;
