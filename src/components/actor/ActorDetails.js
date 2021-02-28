@@ -27,7 +27,7 @@ const ActorDetails = () => {
             </Jumbotron>
             <div className="card__container">
                 <Card className="actor__card">
-                    <Card.Img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} />
+                    <Card.Img src={`https://image.tmdb.org/t/p/w500/${actor?.profile_path}`} />
                     <Card.Body>
                         <Card.Title as="h3">{actor.name}</Card.Title>
                         <Card.Text>{actor.biography}</Card.Text>

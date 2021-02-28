@@ -12,7 +12,6 @@ const useSearchHooks = () => {
     const [searchFilterType, setSearchFilterType] = useState('all');
     const [suggestions, setSuggestions] = useState([]);
 
-
     const handleInputChange = (e) => {
         const { value } = e.target;
         setSearchInputValue(value);

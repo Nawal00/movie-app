@@ -2,9 +2,8 @@ import axios from 'axios';
 
 const serverApi = axios.create({
     baseURL: 'https://api.themoviedb.org/3',
-    params: { api_key: '15bff328286beedc36d2ae75dc39c48e' }
+    params: { api_key: `${process.env.REACT_APP_API_KEY}` }
 });
-
 
 export const searchMovie = async (searchMovie) => {
     try {
