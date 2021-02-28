@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import './CastLayout.scss';
 
 export default function CastLayout({ cast }) {
-
+ 
     return (
         <Col sm={3}>
             <Link to={`/person/${cast.id}`}>
@@ -23,12 +23,8 @@ export default function CastLayout({ cast }) {
 };
 
 CastLayout.propTypes = {
+    id: PropTypes.number,
     name: PropTypes.string,
-    overview: PropTypes.string,
-    release_date: PropTypes.string,
-    title: PropTypes.string,
     character: PropTypes.string,
-    first_air_date: PropTypes.string,
-    poster_path: PropTypes.string,
     profile_path: PropTypes.string
 };

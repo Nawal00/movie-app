@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+
 import './SearchBar.scss'
 
 const searchTypeObj = {
@@ -27,7 +28,7 @@ const SearchBar = (props) => {
         <Form className="search__bar__component">
             <Form.Group>
                 <Form.Row>
-                    <Col sm={{ span: 5, offset: 3 }}>
+                    <Col sm={{ span: 7, offset: 2 }}>
                         <Form.Control
                             size="lg"
                             name="searchInputValue"
@@ -61,7 +62,7 @@ const SearchBar = (props) => {
                     </Col>
                 </Form.Row>
                 <Row style={{ padding: '1rem 0' }}>
-                    <Col sm={{ span: 12, offset: 3 }}>
+                    <Col sm={{ span: 12, offset: 2 }}>
                         {Object.keys(searchTypeObj).map((searchTypeButton, i) =>
                             <Button
                                 key={searchTypeButton + i}

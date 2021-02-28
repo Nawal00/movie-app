@@ -6,7 +6,7 @@ const useSearchHooks = () => {
 
     const [searchInputValue, setSearchInputValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
-    const [filteredSearchResult, setFilteredSsearchResult] = useState([]);
+    const [filteredSearchResult, setFilteredSsearchResult] = useState(null || []);
     const [searchType, setSearchType] = useState('all');
     const [suggestions, setSuggestions] = useState([]);
 
