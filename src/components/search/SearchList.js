@@ -9,7 +9,7 @@ const SearchList = (props) => {
         <Link to={`/${props.media_type}/${props.id}`}>
             <CardLayout {...props} />
         </Link>
-    )
+    );
 }
 
 export default SearchList; 

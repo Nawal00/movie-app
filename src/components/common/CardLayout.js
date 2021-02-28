@@ -15,8 +15,8 @@ export default function CardLayout(props) {
                 <Card.Img src={`https://image.tmdb.org/t/p/w500/${imgUrl}`} />
                 <Card.Body>
                     <Card.Title as="h3">{title ? title : name}</Card.Title>
-                    {release_date && <Card.Text><strong>Release:</strong> {release_date.split('-')[0]}</Card.Text>}
-                    {first_air_date && <Card.Text><strong>FirstAir Date: </strong> {first_air_date.split('-')[0]}</Card.Text>}
+                    {release_date && <Card.Text><strong>Release:</strong> {release_date}</Card.Text>}
+                    {first_air_date && <Card.Text><strong>First Air Date:</strong> {first_air_date}</Card.Text>}
                     {character && <Card.Text><strong>Character:</strong> {character}</Card.Text>}
                     <Card.Text>{overview}</Card.Text>
                 </Card.Body>

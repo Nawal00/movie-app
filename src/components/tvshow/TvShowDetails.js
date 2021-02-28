@@ -36,7 +36,7 @@ export default function TvShowDetails() {
                     <CastLayout cast={cast} key={cast.id + cast.credit_id} />)}
             </Row>
         </div>
-    )
+    );
 }
 
 

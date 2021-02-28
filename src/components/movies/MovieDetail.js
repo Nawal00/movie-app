@@ -34,7 +34,7 @@ export default function MovieDetails() {
                     <CastLayout cast={cast} key={cast.id + cast.credit_id} />)}
             </Row>
         </div>
-    )
+    );
 }
 
 

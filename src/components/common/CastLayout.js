@@ -19,8 +19,8 @@ export default function CastLayout({ cast }) {
                 </Card>
             </Link>
         </Col>
-    )
-};
+    );
+}
 
 CastLayout.propTypes = {
     id: PropTypes.number,

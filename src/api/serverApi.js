@@ -34,7 +34,7 @@ export const fetchMovieDetails = async (id) => {
     catch (err) {
         console.log(err);
     }
-}
+};
 
 export const fetchTvShowDetails = async (id) => {
     try {
@@ -44,7 +44,7 @@ export const fetchTvShowDetails = async (id) => {
     catch (err) {
         console.log(err);
     }
-}
+};
 
 export const fetchCast = async (id, type) => {
     try {
@@ -54,7 +54,7 @@ export const fetchCast = async (id, type) => {
     catch (err) {
         console.log(err);
     }
-}
+};
 
 export const fetchActorMovieCredits = async (id) => {
     try {
@@ -64,7 +64,7 @@ export const fetchActorMovieCredits = async (id) => {
     catch (error) {
         console.log(error);
     }
-}
+};
 
 export const fetchActorDetails = async (id) => {
     try {
@@ -74,4 +74,4 @@ export const fetchActorDetails = async (id) => {
     catch (error) {
         console.log(error);
     }
-}
+};

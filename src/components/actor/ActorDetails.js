@@ -42,12 +42,12 @@ const ActorDetails = () => {
             </Jumbotron>
 
             {actorCredits?.map((movie, i) =>
-                <Link to={`/movie/${movie.id}`} key={movie.id + i}>
-                    <CardLayout  {...movie} />
+                <Link to={`/movie/${movie.id}`} key={movie.id + Math.random()}>
+                    <CardLayout {...movie} />
                 </Link>
             )}
         </div>
-    )
+    );
 }
 
 export default ActorDetails;

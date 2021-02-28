@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
@@ -16,13 +16,14 @@ const SearchBar = (props) => {
 
     const {
         searchInputValue,
-        handleSearchKeywords,
-        fetchSearchKeywordsAPI,
-        handleSearchType,
-        searchType,
+        handleInputChange,
+        fetchSearchAllAPI,
+        handleSearchFilterType,
+        searchFilterType,
         suggestions,
-        setSearchInputValue,
     } = props;
+
+    const [displaySuggestions, setDisplaySuggestions] = useState(false);
 
     return (
         <Form className="search__bar__component">
@@ -35,30 +36,34 @@ const SearchBar = (props) => {
                             type="text"
                             value={searchInputValue}
                             placeholder="i.e. Jumanji or Jamie Foxx"
-                            onChange={handleSearchKeywords}
+                            onChange={handleInputChange}
+                            onBlur={() => setTimeout(() => setDisplaySuggestions(false), 100)}
+                            onFocus={() => setDisplaySuggestions(true)}
                             autoFocus
                         />
-                        <Col sm={12} className="suggestion__list__container">
-                            {suggestions.map(suggestion =>
-                                <Link
-                                    to={`/${suggestion.media_type}/${suggestion.id}`}
-                                    key={suggestion.id}
-                                >
-                                    <option onClick={() => setSearchInputValue('')}>
-                                        {suggestion.title || suggestion.name}
-                                    </option>
-                                </Link>
-                            )}
-                        </Col>
+                        {displaySuggestions &&
+                            <Col sm={12} className="suggestion__list__container">
+                                {suggestions.map(suggestion =>
+                                    <Link
+                                        to={`/${suggestion.media_type}/${suggestion.id}`}
+                                        key={suggestion.id}
+                                    >
+                                        <option onClick={() => setDisplaySuggestions(false)}>
+                                            {suggestion.title || suggestion.name}
+                                        </option>
+                                    </Link>
+                                )}
+                            </Col>
+                        }
                     </Col>
                     <Col xs="auto">
                         <Button
                             size="lg"
                             type="submit"
-                            onClick={(e) => { fetchSearchKeywordsAPI(e); setSearchInputValue('') }}
+                            onClick={(e) => { fetchSearchAllAPI(e); }}
                         >
                             Search
-                            </Button>
+                        </Button>
                     </Col>
                 </Form.Row>
                 <Row style={{ padding: '1rem 0' }}>
@@ -66,9 +71,9 @@ const SearchBar = (props) => {
                         {Object.keys(searchTypeObj).map((searchTypeButton, i) =>
                             <Button
                                 key={searchTypeButton + i}
-                                variant={searchType.includes(searchTypeButton) ? 'light' : 'default'}
+                                variant={searchFilterType.includes(searchTypeButton) ? 'light' : 'default'}
                                 value={searchTypeButton}
-                                onClick={(e) => handleSearchType(e)}
+                                onClick={(e) => handleSearchFilterType(e)}
                             >
                                 {searchTypeObj[searchTypeButton]}
                             </Button>
@@ -77,17 +82,16 @@ const SearchBar = (props) => {
                 </Row>
             </Form.Group>
         </Form>
-    )
+    );
 }
 
 export default SearchBar;
 
 SearchBar.propTypes = {
     searchInputValue: PropTypes.string,
-    handleSearchKeywords: PropTypes.func,
-    fetchSearchKeywordsAPI: PropTypes.func,
-    handleSearchType: PropTypes.func,
-    searchType: PropTypes.string,
+    handleInputChange: PropTypes.func,
+    fetchSearchAllAPI: PropTypes.func,
+    handleSearchFilterType: PropTypes.func,
+    searchFilterType: PropTypes.string,
     suggestions: PropTypes.array,
-    setSearchInputValue: PropTypes.func,
 }

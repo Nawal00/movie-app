@@ -18,15 +18,16 @@ import './App.scss';
 const App = () => {
 
   const {
-    handleSearchKeywords,
-    fetchSearchKeywordsAPI,
-    handleSearchType,
+    handleInputChange,
+    fetchSearchAllAPI,
+    handleSearchFilterType,
     filteredSearchResult,
-    searchType,
+    searchFilterType,
     searchInputValue,
     suggestions,
     setSearchInputValue,
   } = useSearchHooks();
+
 
   return (
     <main className="App">
@@ -36,10 +37,10 @@ const App = () => {
       </Jumbotron>
       <SearchBar
         searchInputValue={searchInputValue}
-        handleSearchKeywords={handleSearchKeywords}
-        fetchSearchKeywordsAPI={fetchSearchKeywordsAPI}
-        searchType={searchType}
-        handleSearchType={handleSearchType}
+        handleInputChange={handleInputChange}
+        fetchSearchAllAPI={fetchSearchAllAPI}
+        searchFilterType={searchFilterType}
+        handleSearchFilterType={handleSearchFilterType}
         suggestions={suggestions}
         setSearchInputValue={setSearchInputValue}
       />
@@ -57,10 +58,10 @@ export default App;
 
 App.propTypes = {
   searchInputValue: PropTypes.string,
-  handleSearchKeywords: PropTypes.func,
-  fetchSearchKeywordsAPI: PropTypes.func,
-  handleSearchType: PropTypes.func,
-  searchType: PropTypes.string,
+  handleInputChange: PropTypes.func,
+  fetchSearchAllAPI: PropTypes.func,
+  handleSearchFilterType: PropTypes.func,
+  searchFilterType: PropTypes.string,
   suggestions: PropTypes.array,
   setSearchInputValue: PropTypes.func,
 }

@@ -4,45 +4,47 @@ import { searchAllTypes } from '../api/serverApi';
 
 const useSearchHooks = () => {
 
-    const [searchInputValue, setSearchInputValue] = useState('');
-    const [searchResult, setSearchResult] = useState([]);
-    const [filteredSearchResult, setFilteredSsearchResult] = useState(null || []);
-    const [searchType, setSearchType] = useState('all');
-    const [suggestions, setSuggestions] = useState([]);
-
     const history = useHistory();
 
-    const handleSearchKeywords = (e) => {
+    const [searchInputValue, setSearchInputValue] = useState('');
+    const [searchResult, setSearchResult] = useState([]);
+    const [filteredSearchResult, setFilteredSearchResult] = useState([]);
+    const [searchFilterType, setSearchFilterType] = useState('all');
+    const [suggestions, setSuggestions] = useState([]);
+
+
+    const handleInputChange = (e) => {
         const { value } = e.target;
         setSearchInputValue(value);
     };
 
-    const fetchSearchKeywordsAPI = async (e) => {
+    const fetchSearchAllAPI = async (e) => {
         e.preventDefault();
         setSearchResult(await searchAllTypes(searchInputValue));
         history.push('/');
     };
 
-    const handleSearchType = (e) => {
+    const handleSearchFilterType = (e) => {
         const { value } = e.target;
-        setSearchType(value);
+        setSearchFilterType(value);
     };
 
-    const handleSearchFilter = useCallback((filterType) => {
-        if (searchType.length > 1 && searchType !== 'all') {
-            const filteredBySearchType = searchResult?.filter(list => list.media_type === filterType);
-            setFilteredSsearchResult(filteredBySearchType);
+    const handleSearchFilter = useCallback((searchFilterType) => {
+        if (searchFilterType.length > 1 && searchFilterType !== 'all') {
+            const filteredBySearchType = searchResult?.filter(list => list.media_type === searchFilterType);
+            setFilteredSearchResult(filteredBySearchType);
         } else {
-            setFilteredSsearchResult(searchResult)
+            setFilteredSearchResult(searchResult)
         }
-    }, [searchResult, searchType])
+    }, [searchResult])
 
     useEffect(() => {
-        handleSearchFilter(searchType)
-    }, [searchType, searchResult, handleSearchFilter])
+        handleSearchFilter(searchFilterType)
+    }, [searchFilterType, searchResult, handleSearchFilter])
 
     const handleSuggestions = useCallback(async () => {
-        if (searchInputValue.length > 5) {
+
+        if (searchInputValue.length >= 5) {
             setSuggestions(await searchAllTypes(searchInputValue));
         } else {
             setSuggestions([]);
@@ -50,15 +52,15 @@ const useSearchHooks = () => {
     }, [searchInputValue]);
 
     useEffect(() => {
-        handleSuggestions()
+        handleSuggestions();
     }, [handleSuggestions, searchInputValue]);
 
     return {
-        handleSearchKeywords,
-        fetchSearchKeywordsAPI,
-        handleSearchType,
+        handleInputChange,
+        fetchSearchAllAPI,
+        handleSearchFilterType,
         filteredSearchResult,
-        searchType,
+        searchFilterType,
         searchInputValue,
         suggestions,
         setSearchInputValue,
