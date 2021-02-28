@@ -60,7 +60,7 @@ const SearchBar = (props) => {
                         <Button
                             size="lg"
                             type="submit"
-                            onClick={(e) => { fetchSearchAllAPI(e); }}
+                            onClick={(e) => fetchSearchAllAPI(e)}
                         >
                             Search
                         </Button>
