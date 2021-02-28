@@ -1,12 +1,16 @@
 @import "~bootstrap/scss/bootstrap";
 
-
 .App {
-    a { 
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-     }
+    width: 69rem;
+    margin: auto;
+  a {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .jumbotron {
+    background: #235789;
+    color: #fff;
+    text-align: center;
+  }
 }
-
-

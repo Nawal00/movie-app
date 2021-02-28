@@ -69,7 +69,6 @@ export const fetchActorMovieCredits = async (id) => {
 export const fetchActorDetails = async (id) => {
     try {
         const { data } = await serverApi.get(`/person/${id}`);
-        console.log('data:', data);
         return data;
     }
     catch (error) {

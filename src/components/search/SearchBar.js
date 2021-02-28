@@ -27,7 +27,7 @@ const SearchBar = (props) => {
         <Form className="search__bar__component">
             <Form.Group>
                 <Form.Row>
-                    <Col sm={{ span: 4, offset: 4 }}>
+                    <Col sm={{ span: 5, offset: 3 }}>
                         <Form.Control
                             size="lg"
                             name="searchInputValue"
@@ -61,7 +61,7 @@ const SearchBar = (props) => {
                     </Col>
                 </Form.Row>
                 <Row style={{ padding: '1rem 0' }}>
-                    <Col sm={{ span: 6, offset: 4 }}>
+                    <Col sm={{ span: 12, offset: 3 }}>
                         {Object.keys(searchTypeObj).map((searchTypeButton, i) =>
                             <Button
                                 key={searchTypeButton + i}
