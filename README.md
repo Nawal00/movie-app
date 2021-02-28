@@ -14,7 +14,7 @@ In the project directory, you can run:
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### Improvements   
+### Future Improvements   
 * Add API error handling, 
 * Fully responsive UI.
 * I would make improvements to UX show no search results, enable keys to select search results etc.  
