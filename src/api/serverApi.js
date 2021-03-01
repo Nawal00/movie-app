@@ -5,9 +5,9 @@ const serverApi = axios.create({
     params: { api_key: `${process.env.REACT_APP_TMDB_API_KEY}` }
 });
 
-export const searchMovie = async (searchMovie) => {
+export const searchMovie = async (movie) => {
     try {
-        const response = await serverApi.get(`/search/movie?query=${searchMovie}`)
+        const response = await serverApi.get(`/search/movie?query=${movie}`)
         return response.data.results;
     }
     catch (err) {
@@ -25,9 +25,9 @@ export const searchAllTypes = async (searchKey) => {
     }
 };
 
-export const fetchMovieDetails = async (id) => {
+export const fetchMovieDetails = async (movieId) => {
     try {
-        const { data } = await serverApi.get(`/movie/${id}`);
+        const { data } = await serverApi.get(`/movie/${movieId}`);
         return data;
     }
     catch (err) {
@@ -35,9 +35,9 @@ export const fetchMovieDetails = async (id) => {
     }
 };
 
-export const fetchTvShowDetails = async (id) => {
+export const fetchTvShowDetails = async (tvShowId) => {
     try {
-        const { data } = await serverApi.get(`/tv/${id}`);
+        const { data } = await serverApi.get(`/tv/${tvShowId}`);
         return data;
     }
     catch (err) {
@@ -45,9 +45,9 @@ export const fetchTvShowDetails = async (id) => {
     }
 };
 
-export const fetchCast = async (id, type) => {
+export const fetchCast = async (castId, searchType) => {
     try {
-        const { data } = await serverApi.get(`${type}/${id}/credits`);
+        const { data } = await serverApi.get(`${searchType}/${castId}/credits`);
         return data.cast;
     }
     catch (err) {
@@ -55,9 +55,9 @@ export const fetchCast = async (id, type) => {
     }
 };
 
-export const fetchActorMovieCredits = async (id) => {
+export const fetchActorMovieCredits = async (actorId) => {
     try {
-        const { data } = await serverApi.get(`/person/${id}/movie_credits`);
+        const { data } = await serverApi.get(`/person/${actorId}/movie_credits`);
         return data.cast;
     }
     catch (error) {
@@ -65,9 +65,9 @@ export const fetchActorMovieCredits = async (id) => {
     }
 };
 
-export const fetchActorDetails = async (id) => {
+export const fetchActorDetails = async (actorId) => {
     try {
-        const { data } = await serverApi.get(`/person/${id}`);
+        const { data } = await serverApi.get(`/person/${actorId}`);
         return data;
     }
     catch (error) {
