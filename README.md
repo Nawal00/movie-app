@@ -17,9 +17,9 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 ### Future Improvements   
 * Add API error handling, 
 * Fully responsive UI.
-* I would make improvements to UX show no search results, enable keys to select search results etc.  
+* I would make improvements to UX i.e. show no search results, enable keys to select search results etc.  
 * I could use React Context for my Search Bar state for a bigger app however for the scope 
 of this project I utilised custom hooks for simplicity. 
 * If time allowed, I would have liked to get more test coverage and write project in Typescript. 
-As of now using Typescript would slow me down as I don't use it daily. 
+As of now using Typescript would slow me down because I don't use it daily. 
 
