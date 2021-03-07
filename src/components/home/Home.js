@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import SearchList from '../search/SearchList';
+import SearchList from '../search/SearchList.tsx';
 
 const Home = ({ filteredSearchResult }) => {
 

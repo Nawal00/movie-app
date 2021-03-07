@@ -1,18 +1,40 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Row, Col, Button } from 'react-bootstrap';
-import PropTypes from 'prop-types';
 
 import './SearchBar.scss'
 
-const searchTypeObj = {
+interface SuggestionObj {
+    media_type: string, 
+    id: string,
+    title: string, 
+    name: string
+}
+
+interface Props {
+    searchInputValue: string,
+    handleInputChange: (event: React.ChangeEvent<HTMLSelectElement>) => string,
+    fetchSearchAllAPI: () => Promise<Array<{}>>,
+    handleSearchFilterType: (e: React.MouseEvent<HTMLElement, MouseEvent>) => string,
+    searchFilterType: string,
+    suggestions: Array<SuggestionObj>, 
+}; 
+
+type SearchTypes = {
+    person: string,
+    movie: string,
+    tv: string,
+    all: string
+}
+
+const searchTypeObj: SearchTypes = {
     person: 'Actor',
     movie: 'Movies',
     tv: 'TV Shows',
     all: 'All'
 };
 
-const SearchBar = (props) => {
+const SearchBar: React.FC<Props> = (props) => {
 
     const {
         searchInputValue,
@@ -23,7 +45,7 @@ const SearchBar = (props) => {
         suggestions,
     } = props;
 
-    const [displaySuggestions, setDisplaySuggestions] = useState(false);
+    const [displaySuggestions, setDisplaySuggestions] = useState<boolean>(false);
 
     return (
         <Form className="search__bar__component">
@@ -60,7 +82,7 @@ const SearchBar = (props) => {
                         <Button
                             size="lg"
                             type="submit"
-                            onClick={(e) => fetchSearchAllAPI(e)}
+                            onClick={fetchSearchAllAPI}
                         >
                             Search
                         </Button>
@@ -75,7 +97,7 @@ const SearchBar = (props) => {
                                 value={searchTypeButton}
                                 onClick={(e) => handleSearchFilterType(e)}
                             >
-                                {searchTypeObj[searchTypeButton]}
+                                {searchTypeObj[searchTypeButton as keyof SearchTypes]}
                             </Button>
                         )}
                     </Col>
@@ -86,12 +108,3 @@ const SearchBar = (props) => {
 }
 
 export default SearchBar;
-
-SearchBar.propTypes = {
-    searchInputValue: PropTypes.string,
-    handleInputChange: PropTypes.func,
-    fetchSearchAllAPI: PropTypes.func,
-    handleSearchFilterType: PropTypes.func,
-    searchFilterType: PropTypes.string,
-    suggestions: PropTypes.array,
-}
